@@ -12,7 +12,8 @@ angular
   .module('billetApp', [
     'ngCookies',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -29,4 +30,12 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function () {
+	  
+	  
+	  var ref = new Firebase("https://billet.firebaseio.com/");
+	  
+	  console.log(ref);
+	  
   });
