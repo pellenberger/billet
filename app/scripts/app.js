@@ -13,7 +13,7 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'firebase'
+    'firebase'   
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,11 +31,8 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function () {
+  .run(function (FirebaseService) {	  
 	  
-	  
-	  var ref = new Firebase("https://billet.firebaseio.com/");
-	  
-	  console.log(ref);
+	  FirebaseService.connect();	  
 	  
   });
