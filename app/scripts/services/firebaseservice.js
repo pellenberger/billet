@@ -7,12 +7,30 @@
  */
 angular.module('billetApp').service('FirebaseService', function() {
 	
-	var ref = new Firebase("https://billet.firebaseio.com/");
-	console.log(ref);
+	var ref = new Firebase("https://billet.firebaseio.com/lists");	
+	var authToken = "Z5FWNA4t2jzM0Nq1R8RuknZbay3nheavChIhxlwU";
 
 	return {
-		connect: function(){
-			console.log("connect");
+		connect: function(){			
+			ref.authWithCustomToken(authToken, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+			  } else {
+			    console.log("Login Succeeded!", authData);
+			  }
+			});			
+		},
+		createList: function(name) {
+			ref.push({
+				'name' : name
+			}, function(error){
+				if (error) {
+					console.log("Create list failed : " + error);
+				}
+				else {
+					console.log("Create list succeeded");
+				}
+			});
 		}
 	};
 

@@ -33,6 +33,7 @@ angular
   })
   .run(function (FirebaseService) {	  
 	  
-	  FirebaseService.connect();	  
+	  FirebaseService.connect();	
+	  FirebaseService.createList("test");
 	  
   });
