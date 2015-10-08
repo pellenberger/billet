@@ -13,7 +13,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'firebase'   
+    'firebase',
+    'LocalStorageModule'    
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,9 +32,11 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function (FirebaseService) {	  
+  .run(function (FirebaseService, StorageService) {	  
 	  
-	  FirebaseService.connect();	
-	  FirebaseService.createList("test");
+//	  FirebaseService.connect();	
+//	  FirebaseService.createList("test");
+	  
+	  StorageService.test();
 	  
   });
