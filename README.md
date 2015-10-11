@@ -1,12 +1,15 @@
 # billet
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+Write a description ! 
 
-## Build & development
+## Firebase
 
-Run `grunt` for building and `grunt serve` for preview.
+https://www.firebase.com/
 
-## Testing
+## AngularFire
 
-Running `grunt test` will run the unit tests with karma.
+https://www.firebase.com/docs/web/libraries/angular/
+
+## angular-local-storage
+
+https://github.com/grevory/angular-local-storage
