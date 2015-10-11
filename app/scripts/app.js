@@ -14,29 +14,13 @@ angular
     'ngResource',
     'ngRoute',
     'firebase',
-    'LocalStorageModule'    
+    'LocalStorageModule',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+
   })
-  .run(function (FirebaseService, StorageService) {	  
-	  
-//	  FirebaseService.connect();	
-//	  FirebaseService.createList("test");
-	  
-	  StorageService.test();
-	  
+  .run(function (FirebaseService, StorageService) {
+
+
   });
