@@ -18,7 +18,15 @@ angular
     'ngMaterial'
   ])
   .config(function ($routeProvider) {
-
+    $routeProvider
+    .when('/:listId', {
+      templateUrl: 'views/list.html',
+      controller: 'ListCtrl',
+      controllerAs: 'list'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
   })
   .run(function (FirebaseService, StorageService) {
 
