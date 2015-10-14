@@ -30,6 +30,15 @@ angular.module('billetApp')
      },
      setCurrentList : function(id, name) {
        localStorageService.set(CURRENT_LIST, {'id' : id, 'name' : name});
+     },
+     findListById : function(id) {
+       var lists = localStorageService.get(LISTS);
+       for (var i = 0; i < lists.length; i ++) {
+         if (lists[i].id == id) {
+           return lists[i];
+         }
+       }
+
      }
 	  }
   });

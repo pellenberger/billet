@@ -29,6 +29,8 @@ angular
     });
   })
   .run(function (FirebaseService, StorageService) {
-
+    //StorageService.saveList('a', 'list1');
+    //StorageService.saveList('b', 'list2');
+    //StorageService.setCurrentList('a', 'list1');
 
   });

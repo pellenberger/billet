@@ -30,6 +30,31 @@
         </div>
       </md-toolbar>
 
+      <div layout="row" layout-margin>
+        <div flex="20" hide-sm hide-md></div>
+        <md-card flex>
+          <md-card-content>
+            <md-content>
+
+              <div ng-controller="MenuCtrl">
+                <md-input-container>
+                  <label>Mon billet</label>
+                  <md-select ng-model="currentListId" ng-change="currentListChanged()">
+                    <md-option ng-repeat="list in lists" value="{{list.id}}">
+                      {{list.name}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+              </div>
+
+              <div ng-view></div>
+
+            </md-content>
+          </md-card-content>
+        </md-card>
+        <div flex="20" hide-sm hide-md></div>
+      </div>
+
       <div ng-view></div>
     </md-content>
 
@@ -64,6 +89,7 @@
         <script src="scripts/services/firebaseservice.js"></script>
         <script src="scripts/services/storageservice.js"></script>
         <script src="scripts/controllers/list.js"></script>
+        <script src="scripts/controllers/menu.js"></script>
         <!-- endbuild -->
 </body>
 </html>
