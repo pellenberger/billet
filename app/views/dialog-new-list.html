@@ -1,0 +1,17 @@
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Nouveau billet</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <md-input-container>
+      <label>Nom</label>
+      <input ng-model="listName">
+    </md-input-container>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="confirmDialog()" ng-disabled="listName === ''" class="md-primary">Ok</md-button>
+    <md-button ng-click="closeDialog()" class="md-primary">Annuler</md-button>
+  </div>
+</md-dialog>

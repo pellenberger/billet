@@ -32,7 +32,7 @@ angular.module('billetApp')
        localStorageService.set(CURRENT_LIST, {'id' : id, 'name' : name});
      },
      findListById : function(id) {
-       var lists = localStorageService.get(LISTS);
+       var lists = this.getLists();
        for (var i = 0; i < lists.length; i ++) {
          if (lists[i].id == id) {
            return lists[i];

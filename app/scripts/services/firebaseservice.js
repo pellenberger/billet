@@ -5,17 +5,18 @@
  * @name billetApp.FirebaseService
  * @description # FirebaseService Service in the billetApp.
  */
-angular.module('billetApp').service('FirebaseService', function($firebaseArray) {
+angular.module('billetApp').service('FirebaseService', function($firebaseArray, $q) {
 
 	var listsRef = new Firebase("https://billet.firebaseio.com/lists");
 	var authToken = "Z5FWNA4t2jzM0Nq1R8RuknZbay3nheavChIhxlwU";
 
-  connect();
+  connect(listsRef);
 
   var lists = $firebaseArray(listsRef);
+  var items;
 
-  function connect() {
-    listsRef.authWithCustomToken(authToken, function(error) {
+  function connect(ref) {
+    ref.authWithCustomToken(authToken, function(error) {
       if (error) {
         // TODO error handling
         console.log("Login Failed!", error);
@@ -30,8 +31,22 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray) 
         'timestamp' : Firebase.ServerValue.TIMESTAMP
       });
 		},
-    getLists: function() {
-      return lists;
+    getItems: function(listId) {
+      var itemsRef = new Firebase("https://billet.firebaseio.com/lists/" + listId + "/items");
+      connect(itemsRef);
+      items = $firebaseArray(itemsRef);
+      var defer = $q.defer();
+      items.$loaded(function() {
+        defer.resolve(items);
+        });
+      return defer.promise;
+    },
+    addItem: function(description) {
+      items.$add({
+        'description' : description,
+        'checked' : false,
+        'timestamp' : Firebase.ServerValue.TIMESTAMP
+      })
     }
 	};
 
