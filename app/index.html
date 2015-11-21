@@ -31,29 +31,39 @@
       </md-toolbar>
 
       <div layout="row" layout-margin>
+
         <div flex="20" hide-sm hide-md></div>
-        <md-card flex>
-          <md-card-content>
-            <md-content>
 
-              <div ng-controller="MenuCtrl">
-                <md-input-container>
-                  <label>Mon billet</label>
-                  <md-select ng-model="currentListId" ng-change="currentListChanged()">
-                    <md-option ng-repeat="list in lists" value="{{list.id}}">
-                      {{list.name}}
-                    </md-option>
-                  </md-select>
-                </md-input-container>
-                <md-button ng-click="showNewListDialog()" class="md-raised md-primary">Nouveau billet</md-button>
-              </div>
+        <div flex>
 
+          <md-card flex>
+            <md-card-content>
+              <md-content>
+                <div ng-controller="MenuCtrl">
+                  <md-input-container>
+                    <label>Mon billet</label>
+                    <md-select ng-model="currentListId" ng-change="currentListChanged()">
+                      <md-option ng-repeat="list in lists" value="{{list.id}}">
+                        {{list.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-button ng-click="showNewListDialog(false)" class="md-raised md-primary">Nouveau billet</md-button>
+                </div>
+              </md-content>
+            </md-card-content>
+          </md-card>
+
+          <md-card flex>
+            <md-card-content>
               <div ng-view></div>
+            </md-card-content>
+          </md-card>
 
-            </md-content>
-          </md-card-content>
-        </md-card>
+        </div>
+
         <div flex="20" hide-sm hide-md></div>
+
       </div>
     </md-content>
 

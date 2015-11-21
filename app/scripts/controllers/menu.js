@@ -8,7 +8,9 @@
  * Controller of the billetApp
  */
 angular.module('billetApp')
-  .controller('MenuCtrl', ['$scope', '$mdDialog', '$location', 'StorageService', 'FirebaseService', function ($scope, $mdDialog, $location, StorageService, FirebaseService) {
+  .controller('MenuCtrl', ['$scope', '$mdDialog', '$location', 'StorageService', 'FirebaseService', function ($scope, $mdDialog, $location, StorageService, FirebaseService, $routeParams) {
+
+    console.log("controller menu");
 
     $scope.currentListChanged = function () {
       var list = StorageService.findListById($scope.currentListId);
@@ -16,12 +18,14 @@ angular.module('billetApp')
       changePath(list.id);
     };
 
-    $scope.showNewListDialog = function () {
+    $scope.showNewListDialog = function (firstList) {
       $mdDialog.show({
         templateUrl: 'views/dialog-new-list.html',
         parent: angular.element(document.body),
-        clickOutsideToClose: true,
+        clickOutsideToClose: !firstList,
+        escapeToClose: !firstList,
         controller: function ($scope, $mdDialog) {
+          $scope.firstList = firstList;
           $scope.listName = "";
           $scope.closeDialog = function ()  {
             $mdDialog.cancel();
@@ -64,7 +68,7 @@ angular.module('billetApp')
       changePath($scope.currentListId);
     }
     else {
-      $scope.showNewListDialog();
+      $scope.showNewListDialog(true);
     }
 
   }]);

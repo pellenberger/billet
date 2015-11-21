@@ -25,9 +25,11 @@ angular
       controllerAs: 'list'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: function() {
+        window.location = "/404.html";
+      }
     });
   })
-  .run(function (FirebaseService, StorageService) {
+  .run(function () {
 
   });

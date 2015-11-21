@@ -15,15 +15,6 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
   var lists = $firebaseArray(listsRef);
   var items;
 
-  function connect(ref) {
-    ref.authWithCustomToken(authToken, function(error) {
-      if (error) {
-        // TODO error handling
-        console.log("Login Failed!", error);
-      }
-    });
-  }
-
 	return {
 		createList: function(name) {
       return lists.$add({
@@ -31,9 +22,15 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
         'timestamp' : Firebase.ServerValue.TIMESTAMP
       });
 		},
+    existingList: function(listId) {
+      var defer = $q.defer();
+      lists.$loaded(function() {
+        defer.resolve(lists.$indexFor(listId) != -1);
+      });
+      return defer.promise;
+    },
     getItems: function(listId) {
       var itemsRef = new Firebase("https://billet.firebaseio.com/lists/" + listId + "/items");
-      connect(itemsRef);
       items = $firebaseArray(itemsRef);
       var defer = $q.defer();
       items.$loaded(function() {
@@ -49,5 +46,14 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
       })
     }
 	};
+
+  function connect(ref) {
+    ref.authWithCustomToken(authToken, function(error) {
+      if (error) {
+        // TODO error handling
+        console.log("Login Failed!", error);
+      }
+    });
+  }
 
 });

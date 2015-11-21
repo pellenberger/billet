@@ -5,6 +5,7 @@
     </div>
   </md-toolbar>
   <md-dialog-content>
+    <p ng-if="firstList">Vous n'avez pas encore de billets. Veuillez entrer un nom pour votre nouveau billet ! </p>
     <md-input-container>
       <label>Nom</label>
       <input ng-model="listName">
@@ -12,6 +13,6 @@
   </md-dialog-content>
   <div class="md-actions" layout="row">
     <md-button ng-click="confirmDialog()" ng-disabled="listName === ''" class="md-primary">Ok</md-button>
-    <md-button ng-click="closeDialog()" class="md-primary">Annuler</md-button>
+    <md-button ng-click="closeDialog()" ng-if="!firstList" class="md-primary">Annuler</md-button>
   </div>
 </md-dialog>
