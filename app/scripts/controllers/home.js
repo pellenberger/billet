@@ -12,10 +12,10 @@ angular.module('billetApp')
 
     var currentList = StorageService.getCurrentList();
     if (currentList) {
-      $location.path("lists/" + currentList.id);
+      $location.path('/lists/' + currentList.id);
     }
     else {
-      $scope.currentList = "There is no current list";
+      $location.path('/lists/')
     }
 
   }]);
