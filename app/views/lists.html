@@ -1,6 +1,7 @@
-<form>
+<form ng-hide="!localLists">
   <md-radio-group ng-model="currentList.id" ng-change="currentListChanged()">
     <md-radio-button ng-repeat="list in localLists" ng-value="list.id">{{list.name}}</md-radio-button>
   </md-radio-group>
-  <md-button ng-click="showNewListDialog()" class="md-fab md-accent" aria-label="create-new-list"><md-icon>add</md-icon></md-button>
+  <md-divider></md-divider>
+  <md-button ng-click="showNewListDialog()" class="md-fab md-accent md-mini" aria-label="create-new-list"><md-icon>add</md-icon></md-button>
 </form>

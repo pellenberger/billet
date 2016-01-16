@@ -1,10 +1,9 @@
-<p>list view</p>
-<p>id : {{listId}}</p>
+<h1 class="md-title">Mon billet : {{listName}}</h1>
 
-<!--<p ng-repeat="item in items">{{item.description}}</p>-->
+<p ng-repeat="item in items">{{item.description}}</p>
 
-<!--<md-input-container>-->
-  <!--<label>Description</label>-->
-  <!--<input ng-model="description">-->
-<!--</md-input-container>-->
-<!--<md-button ng-click="addItem()" class="md-primary">Ajouter</md-button>-->
+<md-input-container>
+  <label>Description</label>
+  <input ng-model="description">
+</md-input-container>
+<md-button ng-click="addItem()" class="md-primary">Ajouter</md-button>

@@ -22,6 +22,13 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
         'timestamp' : Firebase.ServerValue.TIMESTAMP
       });
 		},
+    getList: function(listId) {
+      var defer = $q.defer();
+      lists.$loaded(function() {
+        defer.resolve(lists.$getRecord(listId));
+      });
+      return defer.promise;
+    },
     existingList: function(listId) {
       var defer = $q.defer();
       lists.$loaded(function() {
