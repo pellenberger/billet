@@ -6,6 +6,7 @@
  * @description
  * # StorageService
  * Service in the billetApp.
+ * Stores lists as objects with format {id, name} in browser local storage
  */
 angular.module('billetApp')
   .service('StorageService', function (localStorageService) {

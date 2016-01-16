@@ -17,9 +17,19 @@ angular
     'LocalStorageModule',
     'ngMaterial'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider
-    .when('/:listId', {
+    .when('/', {
+      templateUrl: 'views/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'home'
+    })
+    .when('/lists', {
+      templateUrl: 'views/lists.html',
+      controller: 'ListsCtrl',
+      controllerAs: 'lists'
+    })
+    .when('/lists/:listId', {
       templateUrl: 'views/list.html',
       controller: 'ListCtrl',
       controllerAs: 'list'
@@ -29,6 +39,11 @@ angular
         window.location = "/404.html";
       }
     });
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .accentPalette('pink')
+      .warnPalette('red')
   })
   .run(function () {
 
