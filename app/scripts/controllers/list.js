@@ -8,7 +8,7 @@
  * Controller of the billetApp
  */
 angular.module('billetApp')
-  .controller('ListCtrl', ['$scope', '$routeParams', 'FirebaseService', 'StorageService', function ($scope, $routeParams, FirebaseService, StorageService) {
+  .controller('ListCtrl', ['$scope', '$routeParams', '$mdToast', 'FirebaseService', 'StorageService', function ($scope, $routeParams, $mdToast, FirebaseService, StorageService) {
 
     var listId = $routeParams.listId;
     $scope.description = '';
@@ -47,6 +47,11 @@ angular.module('billetApp')
           FirebaseService.removeItem(checkedItems[i]);
         }
       }
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent('Les articles sélectionnés ont été retirés de la liste')
+          .position('bottom left')
+      );
     }
 
     $scope.itemStatusChanged = function() {
