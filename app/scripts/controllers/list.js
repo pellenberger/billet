@@ -8,14 +8,12 @@
  * Controller of the billetApp
  */
 angular.module('billetApp')
-  .controller('ListCtrl', ['$scope', '$routeParams', 'FirebaseService', function ($scope, $routeParams, FirebaseService) {
+  .controller('ListCtrl', ['$scope', '$routeParams', 'FirebaseService', 'StorageService', function ($scope, $routeParams, FirebaseService, StorageService) {
 
     var listId = $routeParams.listId;
     $scope.description = '';
     $scope.noCheckedItem = true;
     $scope.loading = true;
-
-    // TODO store list in local storage if not already
 
     FirebaseService.existingList(listId).then(function (existing) {
       if (existing) {
@@ -25,6 +23,10 @@ angular.module('billetApp')
           FirebaseService.getItems(listId).then(function(items) {
             $scope.items = items;
             $scope.loading = false;
+            if (!StorageService.findListById(listId)) {
+              StorageService.saveList(listId, list.name);
+              StorageService.setCurrentList(listId, list.name);
+            }
           });
         });
       }
