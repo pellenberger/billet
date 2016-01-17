@@ -1,9 +1,17 @@
 <h1 class="md-title">Mon billet : {{listName}}</h1>
 
-<p ng-repeat="item in items">{{item.description}}</p>
+<div ng-repeat="item in items">
+  <md-checkbox ng-model="item.checked">{{item.description}}</md-checkbox>
+</div>
 
-<md-input-container>
-  <label>Description</label>
-  <input ng-model="description">
-</md-input-container>
-<md-button ng-click="addItem()" class="md-primary">Ajouter</md-button>
+<div>
+  <md-button class="md-accent md-raised" ng-click="checkingDone()">J'ai fini mes courses</md-button>
+</div>
+
+<div>
+  <md-input-container>
+    <label>Description</label>
+    <input ng-model="description">
+  </md-input-container>
+  <md-button ng-click="addItem()" class="md-primary">Ajouter</md-button>
+</div>

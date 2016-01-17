@@ -50,7 +50,10 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
         'description' : description,
         'checked' : false,
         'timestamp' : Firebase.ServerValue.TIMESTAMP
-      })
+      });
+    },
+    removeItem: function(item) {
+      items.$remove(item);
     }
 	};
 

@@ -29,9 +29,17 @@ angular.module('billetApp')
         console.log('non existing list');
       }
     });
-    
+
     $scope.addItem = function() {
       FirebaseService.addItem($scope.description);
+    }
+
+    $scope.checkingDone = function() {
+      for (var i = 0; i < $scope.items.length; i ++) {
+        if ($scope.items[i].checked) {
+          FirebaseService.removeItem($scope.items[i]);
+        }
+      }
     }
 
   }]);
