@@ -10,6 +10,8 @@
 angular.module('billetApp')
   .controller('HomeCtrl', ['$scope', '$location', 'StorageService', function ($scope, $location, StorageService) {
 
+    console.log("coucou");
+
     var currentList = StorageService.getCurrentList();
     if (currentList) {
       $location.path('/lists/' + currentList.id);

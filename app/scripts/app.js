@@ -20,19 +20,19 @@ angular
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
-      controller: 'HomeCtrl',
-      controllerAs: 'home'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'home'
     })
     .when('/lists', {
-      templateUrl: 'views/lists.html',
-      controller: 'ListsCtrl',
-      controllerAs: 'lists'
+        templateUrl: 'views/lists.html',
+        controller: 'ListsCtrl',
+        controllerAs: 'lists'
     })
     .when('/lists/:listId', {
-      templateUrl: 'views/list.html',
-      controller: 'ListCtrl',
-      controllerAs: 'list'
+        templateUrl: 'views/list.html',
+        controller: 'ListCtrl',
+        controllerAs: 'list'
     })
     .otherwise({
       redirectTo: function() {
