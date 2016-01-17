@@ -29,8 +29,7 @@ angular.module('billetApp')
         });
       }
       else {
-        // TODO handle non existing list
-        console.log('non existing list');
+        window.location = "/404.html";
       }
     });
 
