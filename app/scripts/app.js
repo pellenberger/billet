@@ -15,7 +15,8 @@ angular
     'ngRoute',
     'firebase',
     'LocalStorageModule',
-    'ngMaterial'
+    'ngMaterial',
+    'angular-clipboard'
   ])
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider

@@ -1,0 +1,19 @@
+<md-dialog>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Partager le billet</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <p>Envoyez le lien ci-dessous à la personne avec laquelle vous voulez partager le billet ! </p>
+        <p class="blt-list-url">{{url}}</p>
+        <md-button class="md-accent md-raised" clipboard text="url" ng-click="copyUrl()">Copier dans le presse-papier</md-button>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="confirmDialog()" class="md-primary md-raised">Ok</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -8,3 +8,8 @@
 .blt-current-list {
   font-weight: bold;
 }
+
+.blt-list-url {
+  margin-top: 50px;
+  font-weight: bold;
+}
