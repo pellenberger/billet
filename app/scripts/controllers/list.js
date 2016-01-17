@@ -47,6 +47,7 @@ angular.module('billetApp')
           FirebaseService.removeItem(checkedItems[i]);
         }
       }
+      $scope.noCheckedItem = true;
       $mdToast.show(
         $mdToast.simple()
           .textContent('Les articles sélectionnés ont été retirés de la liste')
