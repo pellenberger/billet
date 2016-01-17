@@ -2,7 +2,9 @@
 
 https://billet.firebaseapp.com
 
-No account creation, no login, no email validation... Just follow the link above, create a shopping / TODO list and share it with everybody !
+No account creation, no login, no email validation... Just follow the link above, create a shopping / TODO list and share it with everybody !  
+
+This project is also a POC using Firebase, a platform for easily build web applications.
 
 ## Firebase
 
