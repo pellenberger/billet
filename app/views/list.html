@@ -1,17 +1,29 @@
-<h1 class="md-title">Mon billet : {{listName}}</h1>
+<div ng-hide="loading">
+  <h1 class="md-display-2"><span class="blt-current-list">{{listName}}</span></h1>
+  <md-divider></md-divider>
 
-<div ng-repeat="item in items">
-  <md-checkbox ng-model="item.checked">{{item.description}}</md-checkbox>
+  <div ng-hide="items.length == 0">
+    <h1 class="md-display-1">Articles</h1>
+    <div ng-repeat="item in items">
+      <md-checkbox ng-model="item.checked" ng-change="itemStatusChanged()">{{item.description}}</md-checkbox>
+    </div>
+
+    <div>
+      <md-button class="md-accent md-raised" ng-click="checkingDone()" ng-disabled="noCheckedItem"><md-icon>done</md-icon> J'ai fini mes courses</md-button>
+    </div>
+  </div>
+
+  <h1 class="md-display-1">Ajouter un article</h1>
+
+  <div>
+    <md-input-container>
+      <label>Description</label>
+      <input ng-model="description">
+    </md-input-container>
+    <md-button ng-click="addItem()" ng-disabled="description == ''" class="md-fab md-accent md-mini" aria-label="add-item"><md-icon>add</md-icon></md-button>
+  </div>
 </div>
 
-<div>
-  <md-button class="md-accent md-raised" ng-click="checkingDone()">J'ai fini mes courses</md-button>
-</div>
-
-<div>
-  <md-input-container>
-    <label>Description</label>
-    <input ng-model="description">
-  </md-input-container>
-  <md-button ng-click="addItem()" class="md-primary">Ajouter</md-button>
+<div ng-show="loading" layout="row" layout-sm="column" layout-align="space-around">
+  <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
 </div>

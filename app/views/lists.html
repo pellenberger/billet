@@ -1,3 +1,4 @@
+<h1 class="md-display-1">Mes billets</h1>
 <form ng-hide="!localLists">
   <md-radio-group ng-model="currentList.id" ng-change="currentListChanged()">
     <md-radio-button ng-repeat="list in localLists" ng-value="list.id">{{list.name}}</md-radio-button>
