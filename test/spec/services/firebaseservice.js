@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: FirebaseService', function () {
+describe('Service: $firebaseArray', function () {
 
   // load the service's module
   beforeEach(module('billetApp'));
 
   // instantiate service
-  var FirebaseService;
-  beforeEach(inject(function (_FirebaseService_) {
-    FirebaseService = _FirebaseService_;
+  var $firebaseArray;
+  beforeEach(inject(function (_$firebaseArray_) {
+    $firebaseArray = _$firebaseArray_;
   }));
 
   it('should do something', function () {
-    expect(!!FirebaseService).toBe(true);
+    expect(!!$firebaseArray).toBe(true);
   });
 
 });

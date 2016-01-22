@@ -25,7 +25,12 @@
     "grunt-wiredep": "^2.0.0",
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "karma": "~0.13.19",
+    "jasmine-core": "~2.4.1",
+    "karma-jasmine": "~0.3.6",
+    "phantomjs": "~1.9.19",
+    "karma-phantomjs-launcher": "~0.2.3"
   },
   "engines": {
     "node": ">=0.10.0"
