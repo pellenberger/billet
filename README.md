@@ -33,7 +33,7 @@ Following Firebase rules are applied to the model :
     }     
 }
 ```
-Implies following restrictions : 
+Imply following restrictions : 
 
 | method | URI | restriction |
 | --- | --- | --- |
@@ -42,6 +42,10 @@ Implies following restrictions :
 | GET | /lists/:listId | allowed |
 | POST | /lists | allowed |
 
+### No authentication  
+
+Data privacy is guaranteed, even without any user authentication. 
+Indeed, list id has to be known to have an access. 
 
 ## Credits
 
