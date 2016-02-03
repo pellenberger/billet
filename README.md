@@ -4,11 +4,44 @@ https://billet.firebaseapp.com
 
 No account creation, no login, no email validation... Just follow the link above, create a shopping / TODO list and share it with everybody !  
 
-This project is also a POC using Firebase, a platform for easily build web applications.
+This project is also a POC using Firebase, a platform for easily build backend of web applications.
 
 ## Firebase
 
 https://www.firebase.com/
+
+### Security rules
+
+Following Firebase rules are applied to the model : 
+
+```
+{
+    "rules": {  
+      
+      ".read": false,
+      ".write": false,
+      
+      "lists": {
+        ".read": false,
+        ".write": true,
+       
+       "$list": {
+          ".read": true,
+          ".write": true           
+       }
+      }
+    }     
+}
+```
+Implies following restrictions : 
+
+| method | URI | restriction |
+| --- | --- | --- |
+| GET | / | not allowed |
+| GET | /lists | not allowed |
+| GET | /lists/:listId | allowed |
+| POST | /lists | allowed |
+
 
 ## Credits
 
