@@ -5,44 +5,47 @@
  * @name billetApp.FirebaseService
  * @description # FirebaseService Service in the billetApp.
  */
-angular.module('billetApp').service('FirebaseService', function($firebaseArray, $q) {
+angular.module('billetApp').service('FirebaseService', function($firebaseArray, $firebaseObject, $q, $mdDialog) {
 
-	var listsRef = new Firebase("https://billet.firebaseio.com/lists");
-	var authToken = "Z5FWNA4t2jzM0Nq1R8RuknZbay3nheavChIhxlwU";
-
-  connect(listsRef);
-
-  var lists = $firebaseArray(listsRef);
+  var baseUri = "https://billet.firebaseio.com/lists/";
   var items;
 
 	return {
 		createList: function(name) {
-      return lists.$add({
+      return $firebaseArray(new Firebase(baseUri)).$add({
         'name' : name,
         'timestamp' : Firebase.ServerValue.TIMESTAMP
-      });
+      })
 		},
+    // precondition : listId has been tested using function existingList()
     getList: function(listId) {
       var defer = $q.defer();
-      lists.$loaded(function() {
-        defer.resolve(lists.$getRecord(listId));
+      var list = $firebaseObject(new Firebase(baseUri + listId))
+      list.$loaded(function() {
+        defer.resolve(list);
+      }, function(error) {
+        displayErrorToast(error);
       });
       return defer.promise;
     },
     existingList: function(listId) {
       var defer = $q.defer();
-      lists.$loaded(function() {
-        defer.resolve(lists.$indexFor(listId) != -1);
+      var list = $firebaseObject(new Firebase(baseUri + "" + listId))
+      list.$loaded(function() {
+        defer.resolve(list.name != undefined);
+      }, function(error) {
+        displayErrorToast(error)
       });
       return defer.promise;
     },
     getItems: function(listId) {
-      var itemsRef = new Firebase("https://billet.firebaseio.com/lists/" + listId + "/items");
-      items = $firebaseArray(itemsRef);
       var defer = $q.defer();
+      items = $firebaseArray(new Firebase(baseUri + listId + "/items"))
       items.$loaded(function() {
         defer.resolve(items);
-        });
+        }, function(error) {
+        displayErrorToast(error);
+      });
       return defer.promise;
     },
     addItem: function(description) {
@@ -57,13 +60,15 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
     }
 	};
 
-  function connect(ref) {
-    ref.authWithCustomToken(authToken, function(error) {
-      if (error) {
-        // TODO error handling
-        console.log("Login Failed!", error);
-      }
-    });
+  function displayErrorToast(error) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.body))
+        .clickOutsideToClose(true)
+        .title('Erreur')
+        .textContent('Une erreur est survenue lors de la connexion au service Firebase : ' + error)
+        .ok('Ok')
+    );
   }
 
 });
