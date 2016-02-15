@@ -34,6 +34,8 @@ angular.module('billetApp')
      },
      findListById : function(id) {
        var lists = this.getLists();
+       if (!lists)
+         return undefined;
        for (var i = 0; i < lists.length; i ++) {
          if (lists[i].id == id) {
            return lists[i];
