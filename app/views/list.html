@@ -18,7 +18,7 @@
   <div layout="row">
     <md-input-container>
       <label>Description</label>
-      <input ng-model="description">
+      <input ng-model="description" type="text" autocomplete="off">
     </md-input-container>
     <md-button ng-click="addItem()" ng-disabled="description == ''" class="md-fab md-accent md-mini" aria-label="add-item"><md-icon>add</md-icon></md-button>
   </div>
