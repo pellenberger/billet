@@ -20,13 +20,14 @@ angular.module('billetApp')
         FirebaseService.getList(listId).then(function (list) {
           $scope.listName = list.name;
 
+          if (!StorageService.findListById(listId)) {
+            StorageService.saveList(listId, list.name);
+          }
+          StorageService.setCurrentList(listId, list.name);
+
           FirebaseService.getItems(listId).then(function(items) {
             $scope.items = items;
             $scope.loading = false;
-            if (!StorageService.findListById(listId)) {
-              StorageService.saveList(listId, list.name);
-              StorageService.setCurrentList(listId, list.name);
-            }
           });
         });
       }
