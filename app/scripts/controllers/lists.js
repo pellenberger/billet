@@ -13,7 +13,7 @@ angular.module('billetApp')
     $scope.currentList = StorageService.getCurrentList();
     $scope.localLists = StorageService.getLists();
 
-    if (!$scope.localLists) {
+    if (!$scope.localLists || $scope.localLists.length == 0) {
       newList(true);
     }
 

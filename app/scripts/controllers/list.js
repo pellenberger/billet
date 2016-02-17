@@ -31,6 +31,7 @@ angular.module('billetApp')
         });
       }
       else {
+        StorageService.deleteList(listId);
         window.location = "/404.html";
       }
     });

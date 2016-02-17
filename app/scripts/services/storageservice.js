@@ -15,9 +15,11 @@ angular.module('billetApp')
     var LISTS = 'lists';
 
 	  return {
+
 		 getLists : function() {
        return localStorageService.get(LISTS);
 		 },
+
      saveList : function(id, name) {
        var lists = this.getLists();
        if (!lists) {
@@ -26,12 +28,15 @@ angular.module('billetApp')
        lists.push({'id' : id, 'name' : name});
        localStorageService.set(LISTS, lists);
      },
+
      getCurrentList : function() {
        return localStorageService.get(CURRENT_LIST);
      },
+
      setCurrentList : function(id, name) {
        localStorageService.set(CURRENT_LIST, {'id' : id, 'name' : name});
      },
+
      findListById : function(id) {
        var lists = this.getLists();
        if (!lists)
@@ -41,7 +46,18 @@ angular.module('billetApp')
            return lists[i];
          }
        }
+     },
 
+     deleteList : function(id) {
+       var lists = [];
+       var oldLists = this.getLists();
+       for (var i = 0; i < oldLists.length; i ++) {
+         if (oldLists[i].id != id) {
+           lists.push(oldLists[i])
+         }
+       }
+       localStorageService.set(LISTS, lists);
+       localStorageService.remove(CURRENT_LIST);
      }
 	  }
   });
