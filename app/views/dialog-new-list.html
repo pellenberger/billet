@@ -9,8 +9,10 @@
       <div class="md-dialog-content">
         <p ng-if="firstList">Vous n'avez pas encore de billets. Veuillez entrer un nom pour votre nouveau billet ! </p>
         <md-input-container>
-          <label>Nom</label>
-          <input ng-model="listName" type="text" autocomplete="off">
+          <form autocomplete="off" autocorrect="on" autocapitalize="on">
+            <label>Nom</label>
+            <input ng-model="listName">
+          </form>
         </md-input-container>
       </div>
     </md-dialog-content>
