@@ -55,6 +55,9 @@ angular.module('billetApp').service('FirebaseService', function($firebaseArray, 
         'timestamp' : Firebase.ServerValue.TIMESTAMP
       });
     },
+    saveItem: function(item) {
+      items.$save(item);
+    },
     removeItem: function(item) {
       items.$remove(item);
     }

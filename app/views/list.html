@@ -5,7 +5,7 @@
   <div ng-hide="items.length == 0">
     <h2>Articles</h2>
     <div ng-repeat="item in items">
-      <md-checkbox ng-model="item.checked" ng-change="itemStatusChanged()">{{item.description}}</md-checkbox>
+      <md-checkbox ng-model="item.checked" ng-change="itemStatusChanged(item)">{{item.description}}</md-checkbox>
     </div>
 
     <div>

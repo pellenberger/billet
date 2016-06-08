@@ -57,8 +57,9 @@ angular.module('billetApp')
       );
     }
 
-    $scope.itemStatusChanged = function() {
+    $scope.itemStatusChanged = function(item) {
       $scope.noCheckedItem = getCheckedItems().length == 0;
+      FirebaseService.saveItem(item);
     }
 
     function getCheckedItems() {
